@@ -140,6 +140,34 @@ namespace ll //Linked list namespace
                 }
                 return false;
             }
+            Type Get(int Index)
+            {
+                Type ReturnData;
+                if(Head)
+                {
+                    if(Index == LL_TAIL) //To ensure LL_TAIL use is consistent.
+                    {
+                        Index = Size - 1;
+                    }
+                    Node *temp = Head;
+                    if(Index >= -1) //Positive + Tail;
+                    {
+                        for(int i = 0; i < Index; ++i)
+                        {
+                            temp = temp->Next;
+                        }
+                    }
+                    else //Negative
+                    {
+                        for(int i = 0; i > Index; --i)
+                        {
+                            temp = temp->Previous;
+                        }
+                    }
+                    ReturnData = temp->Data;
+                }
+                return ReturnData;
+            }
             //Stack functions.
             void Push(Type NewData) //Wrapper of Insert(). For stacks.
             {
